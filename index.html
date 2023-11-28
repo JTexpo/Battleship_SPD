@@ -1,0 +1,1199 @@
+<html>
+
+<head>
+    <!-- PyScript: https://github.com/pyscript/pyscript/releases -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.05.1/pyscript.css" />
+    <script defer src="https://pyscript.net/releases/2023.05.1/pyscript.js"></script>
+    <!-- Bootstrap: https://getbootstrap.com -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- local Stylesheet -->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <py-config>
+        packages = [
+        "matplotlib"
+        ]
+        [[fetch]]
+        files = ["./main.py", "./battleship_spd/ai.py", "./battleship_spd/game.py"]
+    </py-config>
+</head>
+
+<body>
+    <!-- Healthy Spacing -->
+    <br>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col logo-flex-col">
+                    <img onclick="window.location.href = 'https://jtexpo.github.io'" src="../assets/images/jtexpo.png"
+                        alt="" class="logo-img">
+                    <a href="https://jtexpo.github.io" class="display-3 logo-main-text">JTexpo</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="display-4 text-center">
+                        <a href="https://www.youtube.com/@JTexpo" target="_blank" class="logo-sub-text">
+                            Content To Tr<span style="color: #F3AF56;">AI</span>n Your Brain
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Healthy Spacing -->
+    <br>
+    <br>
+    <!-- Matchbox One D Chess -->
+    <main>
+        <div class="container">
+            <!-- Board -->
+            <div class="row">
+                <div class="col-sm-6 board">
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(0,0)" id="ai_board_0_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(0,1)" id="ai_board_0_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(0,2)" id="ai_board_0_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(0,3)" id="ai_board_0_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(0,4)" id="ai_board_0_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(0,5)" id="ai_board_0_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(0,6)" id="ai_board_0_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(0,7)" id="ai_board_0_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(0,8)" id="ai_board_0_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(0,9)" id="ai_board_0_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(1,0)" id="ai_board_1_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(1,1)" id="ai_board_1_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(1,2)" id="ai_board_1_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(1,3)" id="ai_board_1_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(1,4)" id="ai_board_1_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(1,5)" id="ai_board_1_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(1,6)" id="ai_board_1_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(1,7)" id="ai_board_1_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(1,8)" id="ai_board_1_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(1,9)" id="ai_board_1_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(2,0)" id="ai_board_2_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(2,1)" id="ai_board_2_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(2,2)" id="ai_board_2_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(2,3)" id="ai_board_2_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(2,4)" id="ai_board_2_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(2,5)" id="ai_board_2_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(2,6)" id="ai_board_2_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(2,7)" id="ai_board_2_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(2,8)" id="ai_board_2_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(2,9)" id="ai_board_2_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(3,0)" id="ai_board_3_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(3,1)" id="ai_board_3_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(3,2)" id="ai_board_3_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(3,3)" id="ai_board_3_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(3,4)" id="ai_board_3_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(3,5)" id="ai_board_3_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(3,6)" id="ai_board_3_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(3,7)" id="ai_board_3_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(3,8)" id="ai_board_3_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(3,9)" id="ai_board_3_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(4,0)" id="ai_board_4_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(4,1)" id="ai_board_4_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(4,2)" id="ai_board_4_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(4,3)" id="ai_board_4_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(4,4)" id="ai_board_4_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(4,5)" id="ai_board_4_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(4,6)" id="ai_board_4_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(4,7)" id="ai_board_4_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(4,8)" id="ai_board_4_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(4,9)" id="ai_board_4_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(5,0)" id="ai_board_5_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(5,1)" id="ai_board_5_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(5,2)" id="ai_board_5_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(5,3)" id="ai_board_5_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(5,4)" id="ai_board_5_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(5,5)" id="ai_board_5_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(5,6)" id="ai_board_5_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(5,7)" id="ai_board_5_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(5,8)" id="ai_board_5_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(5,9)" id="ai_board_5_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(6,0)" id="ai_board_6_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(6,1)" id="ai_board_6_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(6,2)" id="ai_board_6_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(6,3)" id="ai_board_6_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(6,4)" id="ai_board_6_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(6,5)" id="ai_board_6_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(6,6)" id="ai_board_6_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(6,7)" id="ai_board_6_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(6,8)" id="ai_board_6_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(6,9)" id="ai_board_6_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(7,0)" id="ai_board_7_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(7,1)" id="ai_board_7_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(7,2)" id="ai_board_7_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(7,3)" id="ai_board_7_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(7,4)" id="ai_board_7_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(7,5)" id="ai_board_7_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(7,6)" id="ai_board_7_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(7,7)" id="ai_board_7_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(7,8)" id="ai_board_7_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(7,9)" id="ai_board_7_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(8,0)" id="ai_board_8_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(8,1)" id="ai_board_8_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(8,2)" id="ai_board_8_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(8,3)" id="ai_board_8_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(8,4)" id="ai_board_8_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(8,5)" id="ai_board_8_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(8,6)" id="ai_board_8_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(8,7)" id="ai_board_8_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(8,8)" id="ai_board_8_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(8,9)" id="ai_board_8_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(9,0)" id="ai_board_9_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(9,1)" id="ai_board_9_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(9,2)" id="ai_board_9_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(9,3)" id="ai_board_9_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(9,4)" id="ai_board_9_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(9,5)" id="ai_board_9_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(9,6)" id="ai_board_9_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(9,7)" id="ai_board_9_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(9,8)" id="ai_board_9_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button py-click="select_tile(9,9)" id="ai_board_9_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button id="player_board_0_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_0_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_0_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_0_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_0_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_0_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_0_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_0_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_0_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_0_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button id="player_board_1_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_1_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_1_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_1_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_1_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_1_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_1_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_1_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_1_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_1_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button id="player_board_2_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_2_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_2_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_2_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_2_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_2_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_2_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_2_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_2_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_2_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button id="player_board_3_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_3_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_3_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_3_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_3_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_3_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_3_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_3_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_3_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_3_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button id="player_board_4_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_4_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_4_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_4_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_4_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_4_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_4_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_4_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_4_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_4_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button id="player_board_5_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_5_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_5_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_5_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_5_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_5_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_5_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_5_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_5_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_5_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button id="player_board_6_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_6_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_6_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_6_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_6_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_6_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_6_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_6_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_6_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_6_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button id="player_board_7_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_7_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_7_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_7_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_7_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_7_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_7_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_7_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_7_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_7_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button id="player_board_8_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_8_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_8_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_8_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_8_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_8_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_8_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_8_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_8_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_8_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-sm-1"></div>
+                        <div class="col-sm-1">
+                            <button id="player_board_9_0" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_9_1" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_9_2" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_9_3" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_9_4" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_9_5" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_9_6" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_9_7" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_9_8" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                        <div class="col-sm-1">
+                            <button id="player_board_9_9" class="btn btn-block btn-dark btn-lg"
+                                style="background-image:url(./assets/images/water.jpeg); background-size:cover;">
+                                <img src="./assets/images/blank.png" alt="" style="width:100%"></button>
+                        </div>
+                    </div><br>
+                </div>
+                <div class="col-sm-6">
+                    <div class="row">&emsp;</div>
+                    <br>
+                    <div class="row">&emsp;</div>
+                    <br>
+                    <div class="row">&emsp;</div>
+                    <br>
+                    <div class="row">&emsp;</div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <button class="btn btn-block btn-danger" py-click="reset()">
+                                Reset
+                            </button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12"><div id="ai-mind-graph"></div></div>
+                    </div>
+                </div>
+            </div>
+            <!-- Healthy Spacing -->
+            <br>
+            <br>
+            <br>
+            <!-- Explination -->
+            <!-- How to use this app -->
+            <div class="row">
+                <div class="h2 info-header">How to use this app</div>
+            </div>
+            <div class="row">
+                <div class="h4 info-body">
+                    When you load the webpage, you'll encounter two visuals.
+                    The Battleship game board on the left, and a heatmap of the AI's moves on the right. <br><br> 
+                    Click the water tiles to fire at the AI's battleships. 
+                    If you hit a battleship, you get to take your turn again.
+                    Continue trading fire until there is a winner indicated by all of the shits being hit.<br><br>
+                    Both players have the following ships: 
+                    <ul>
+                        <li>1 ship of size 5x1</li>
+                        <li>3 ships of size 3x1</li>
+                        <li>1 ship of size 2x1</li>
+                    </ul>
+                    <br>
+                    Once the AI discovers all the ships, the heatmap turns black and white. 
+                    You are allowed you to continue guessing even after the game is over, incase you are wondering where the other ships are. <br><br>
+                    When the game is over click the "Reset" button to get a new board. <br><br>
+                </div>
+            </div>
+            <!-- What is a RNN -->
+            <div class="row">
+                <div class="h2 info-header">What is Spacial Density Probability?</div>
+            </div>
+            <div class="row">
+                <div class="h4 info-body">
+                    Spacial Density Probability (SPD) in statistics involves evaluating possible layouts for given use-cases and creating a density graph. <br><br>
+                    In the case of Battleship, this concept helps us identify the most and least popular segments of the map. <br><br>
+                    For instance, at the beginning of the game, the center of the map is often the most dense area. 
+                    This is because all ship orientations have a higher probability of having at least one part within the middle four tiles. <br><br>
+                    By understanding SPD, we can strategically predict optimal moves for Battleship (the most dense tiles), enhancing the decision-making process.
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Healthy Spacing -->
+    <br>
+    <br>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="h4 footer-rights">&copy; 2023 Justin Tyler Esposito. All rights reserved.</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <py-script src="./main.py"></py-script>
+</body>
+
+</html>

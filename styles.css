@@ -1,0 +1,83 @@
+@font-face { font-family: Alexandria-Black; src: url('assets/fonts/Alexandria/static/Alexandria-Black.ttf'); } 
+@font-face { font-family: Alexandria-Regular; src: url('../../assets/fonts/Alexandria/static/Alexandria-Regular.ttf'); } 
+
+/*
+----
+BODY
+----
+*/
+body{
+    background-color: #343434;
+}
+hr {
+    height: .3rem;
+    background-color: black; 
+    border-radius: 2rem;
+  }
+
+/* 
+----------
+LOGO STYLE
+----------
+*/
+.logo-flex-col{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo-img{
+    height: 5rem;
+    width: 5rem;
+}
+.logo-sub-text{
+    color:#FFF;
+    font-family: Alexandria-Black;
+    text-shadow: .3rem .3rem 0 #000;
+}
+.logo-sub-text:hover{
+    color:#F3AF56;
+    text-decoration: none;
+}
+.logo-main-text{
+    color: #FFF;
+    font-family: Alexandria-Black;
+    text-shadow: .3rem .3rem 0 #000;
+}
+.logo-main-text:hover{
+    color: #FFF;
+    text-decoration: none;
+}
+
+/*
+----
+MAIN
+----
+*/
+.board{
+    background-color: gray;
+    border-radius: 2rem;
+}
+.btn-dark{
+    padding: 0%;
+}
+
+.info-header{
+    color: #F3AF56;
+    font-family: Alexandria-Black;
+    text-shadow: .2rem .2rem 0 #000;
+}
+
+.info-body{
+    color:#FFF;
+    font-family: Alexandria-Regular;
+    text-shadow: .1rem .1rem 0 #000;
+}
+
+/* 
+------------
+FOOTER STYLE
+------------
+*/
+.footer-rights{
+    color: #FFF;
+}
